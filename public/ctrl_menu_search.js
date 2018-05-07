@@ -2,6 +2,7 @@ $(document).ready(function(){
   var config = {
     apiKey: "AIzaSyB8fBptlI8H7f3-HKj2TekFKEQp60-3wuM",
     authDomain: "potzone-website.firebaseapp.com",
+    projectId: 'potzone-website',
     databaseURL: "https://potzone-website.firebaseio.com"
   };
   firebase.initializeApp(config);
@@ -497,7 +498,7 @@ $(document).ready(function(){
     if(type.includes("6")){
       return false
     }
-    
+    return false
   }
 
   function checkPrice(range, item){
@@ -671,16 +672,11 @@ $(document).ready(function(){
   }
 
   function getMenu(){
-    firebase.database().ref('menu').on('value', function(snapshot){
-      //pull the menu
-      if(!snapshot.val()){
-        whole_menu={}
-      } else {
-        whole_menu=snapshot.val();
-      }
-      drawMenu(Object.values(whole_menu))
-      console.log(whole_menu)
+    var bakerMenu = firebase.functions().httpsCallable('bakerMenu')
+    bakerMenu().then(function(result){
+      console.log(result.data)
     })
+
   }
 
   function makeUUID(strain, brand, type){
