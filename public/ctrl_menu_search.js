@@ -672,10 +672,12 @@ $(document).ready(function(){
   }
 
   function getMenu(){
-    var bakerMenu = firebase.functions().httpsCallable('bakerMenu')
-    bakerMenu().then(function(result){
-      console.log(result.data)
-    })
+    // var bakerMenu = firebase.functions().httpsCallable('bakerMenu')
+    // bakerMenu().then(function(result){
+    //   console.log(result)
+    // }, function(){
+    //   console.log('error')
+    // })
 
   }
 

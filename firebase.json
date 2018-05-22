@@ -16,8 +16,12 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/",
         "destination": "/index.html"
+      },
+      {
+        "source": "/menu/**",
+        "function": "bakerMenu"
       }
     ]
   },
